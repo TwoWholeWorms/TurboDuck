@@ -614,6 +614,9 @@ body div.line[ltype=action] .message {
 	text-indent:-23px;
 	word-break:normal;
 }
+body div.line[ltype=action] .message .innerMessage {
+	text-indent:0;
+}
 body[dir=ltr] div[ltype=action] .sender:before {
 	margin-right:15px;
 }
