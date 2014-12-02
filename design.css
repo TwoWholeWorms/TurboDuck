@@ -235,8 +235,8 @@ body div.line[ltype=wallops] {
 	border-left: none;
 }
 
-body div[ltype=ctcp] .senderContainer,
-body div[ltype=notice] .senderContainer {
+body div.line[ltype=ctcp] .senderContainer,
+body div.line[ltype=notice] .senderContainer {
 	color: #f00;
 	font-weight: 700;
 	min-height:23px;
@@ -254,41 +254,52 @@ body div[ltype=notice] .senderContainer {
 	padding-top:6px;
 	padding-bottom:7px;
 }
-body div[ltype=topic] p,
-body div[ltype=debug] p,
-body div[ltype=wallops] p,
-body div[ltype=ctcp] p,
-body div[ltype=notice] p {
+body div.line[ltype=topic] p,
+body div.line[ltype=debug] p,
+body div.line[ltype=wallops] p,
+body div.line[ltype=ctcp] p,
+body div.line[ltype=notice] p {
 	background-color:rgb(48, 48, 48);
 	border-top:1px solid rgb(64, 64, 64);
 	border-bottom:1px solid rgb(64, 64, 64);
 }
 
-body div[ltype=topic] p {
+body div.line[ltype=debug] p,
+body div.line[ltype=topic] p {
 	border-bottom:0;
     font-size: 12px;
 	min-height: 19px;
 	line-height:19px;
 }
-body div[ltype=topic] + div[ltype=topic] p {
+body div.line[ltype=notice] + div.line[ltype=notice] {
+	margin-top:-4px;
+}
+body div.line[ltype=debug] + div.line[ltype=debug] {
+	margin-top:-1px;
+}
+body div.line[ltype=notice] + div.line[ltype=notice] p,
+body div.line[ltype=debug] + div.line[ltype=debug] p,
+body div.line[ltype=topic] + div.line[ltype=topic] p {
 	border-top:0;
 	border-bottom:1px solid rgb(64, 64, 64);
 }
 
-body div[ltype=topic] + div[ltype=topic] p .message {
+body div.line[ltype=notice] + div.line[ltype=notice] p .message,
+body div.line[ltype=notice] + div.line[ltype=notice] p .senderContainer,
+body div.line[ltype=debug] + div.line[ltype=debug] p .message,
+body div.line[ltype=topic] + div.line[ltype=topic] p .message {
 	padding-top:0;
 }
 
-body div[ltype=topic] .message,
-body div[ltype=debug] .message,
-body div[ltype=wallops] .message,
-body div[ltype=ctcp] .message,
-body div[ltype=notice] .message {
+body div.line[ltype=topic] .message,
+body div.line[ltype=wallops] .message,
+body div.line[ltype=ctcp] .message,
+body div.line[ltype=notice] .message {
 	padding-top:6px;
 	padding-bottom:7px;
 }
 
-body div[ltype=notice] .message {
+body div.line[ltype=notice] .message {
 	color: #fff;
 }
 
@@ -299,7 +310,7 @@ body div.line[ltype=privmsg][highlight=false] {
     min-height: 23px;
 }
 
-body div[ltype=privmsg] .senderContainer {
+body div.line[ltype=privmsg] .senderContainer {
 	font-weight: 700;
 	min-height:23px;
 	width: 134px;
@@ -315,9 +326,9 @@ body div[ltype=privmsg] .senderContainer {
 	left: 0;
 	text-overflow: ellipsis;
 }
-body div[ltype=privmsg] .message {
+body div.line[ltype=privmsg] .message {
 }
-body div[ltype=privmsg] .senderContainer {
+body div.line[ltype=privmsg] .senderContainer {
 }
 
 body .senderContainer .swrapper {
@@ -408,25 +419,78 @@ body div.line[ltype=ctcp] .message {
 /* Message of the Day (MOTD) */
 /* 720, 721, 722 are used by ShadowIRCd for Oper MOTD. */
 /* 372, 375, 376 are normal MOTD shared by several IRCds. */
+body div.line[command="305"],
+body div.line[command="306"],
 body div.line[command="372"],
 body div.line[command="721"] {
 	border: none;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding-top:0;
+	padding-bottom:0;
+	line-height:1;
+	min-height:auto;
+	/*padding-top: 3px;
+	padding-bottom: 3px;*/
 }
+
+body div.line[command="305"],
+body div.line[command="306"],
+body div.line[command="372"],
+body div.line[command="321"] {
+	text-indent: 0;
+    margin-left: 141px !important;
+	padding-left:9px;
+	border-left:1px solid rgb(64, 64, 64);
+}
+body div.line[ltype=debug][command="305"] p,
+body div.line[ltype=debug][command="306"] p {
+	padding-top:6px;
+	padding-bottom:6px;
+}
+body div.line[ltype=debug][command="305"] p,
+body div.line[ltype=debug][command="306"] p,
+body div.line[ltype=debug][command="372"] p,
+body div.line[ltype=debug][command="321"] p {
+	background:none;
+	border:none;
+}
+body div.line[ltype=debug][command="305"] .message,
+body div.line[ltype=debug][command="306"] .message,
+body div.line[ltype=debug][command="372"] .message,
+body div.line[ltype=debug][command="721"] .message {
+	padding-left:0 !important;
+}
+
 
 body div.line[command="375"],
 body div.line[command="720"] { /* Start. */
 	border-bottom: none;
-	padding-top: 2px;
-	padding-bottom: 3px;
+	margin-bottom:1px;
+	/*padding-top: 2px;
+	padding-bottom: 3px;*/
+}
+body div.line[command="375"] p,
+body div.line[command="720"] p { /* Start. */
+	padding-top:6px;
+	padding-bottom:6px;
+	line-height:1;
+	min-height:auto;
+}
+body div.line[command="375"] p .message,
+body div.line[command="720"] p .message { /* Start. */
+	padding-bottom:0;
 }
 
 body div.line[command="376"],
 body div.line[command="722"] { /* End. */
 	border-top: none;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	background-color:rgb(48, 48, 48);
+	border-top:1px solid rgb(64, 64, 64);
+	border-bottom:1px solid rgb(64, 64, 64);
+}
+body div.line[command="376"] p,
+body div.line[command="722"] p { /* End. */
+	padding-top:6px;
+	padding-bottom:6px;
 }
 
 body div.line[command="372"] .message,
