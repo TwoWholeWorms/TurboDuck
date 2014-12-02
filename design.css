@@ -243,6 +243,7 @@ body div[ltype=notice] .senderContainer {
 	width: 134px;
 	padding-right:7px;
 	text-align:right;
+	background-color:rgb(48, 48, 48);
 	display:inline-block;
 	overflow: auto;
 	position: absolute;
@@ -250,6 +251,41 @@ body div[ltype=notice] .senderContainer {
 	bottom: 0;
 	left: 0;
 	text-overflow: ellipsis;
+	padding-top:6px;
+	padding-bottom:7px;
+}
+body div[ltype=topic] p,
+body div[ltype=debug] p,
+body div[ltype=wallops] p,
+body div[ltype=ctcp] p,
+body div[ltype=notice] p {
+	background-color:rgb(48, 48, 48);
+	border-top:1px solid rgb(64, 64, 64);
+	border-bottom:1px solid rgb(64, 64, 64);
+}
+
+body div[ltype=topic] p {
+	border-bottom:0;
+    font-size: 12px;
+	min-height: 19px;
+	line-height:19px;
+}
+body div[ltype=topic] + div[ltype=topic] p {
+	border-top:0;
+	border-bottom:1px solid rgb(64, 64, 64);
+}
+
+body div[ltype=topic] + div[ltype=topic] p .message {
+	padding-top:0;
+}
+
+body div[ltype=topic] .message,
+body div[ltype=debug] .message,
+body div[ltype=wallops] .message,
+body div[ltype=ctcp] .message,
+body div[ltype=notice] .message {
+	padding-top:6px;
+	padding-bottom:7px;
 }
 
 body div[ltype=notice] .message {
@@ -269,6 +305,7 @@ body div[ltype=privmsg] .senderContainer {
 	width: 134px;
 	padding-right:7px;
     background-color: #1d1d1d;
+	border-right:1px solid rgb(64, 64, 64);
 	text-align:right;
 	display:inline-block;
 	overflow: hidden;
@@ -355,20 +392,17 @@ body div.line[ltype=dccfiletransfer],
 body div.line[ltype=rawhtml] {
 	color: #eee;
   	z-index: 190;
-	background: #2f2f2f;
   	position: relative;
- 	padding: 2px 0 2px 0;
-	border-top: 1px solid #393939;
-	border-bottom: 1px solid #393939;
 }
 
 body div.line[ltype=invite] .message,
+body div.line[ltype=topic] .message,
 body div.line[ltype=debug] .message,
 body div.line[ltype=dccfiletransfer] .message,
 body div.line[ltype=rawhtml] .message ,
 body div.line[ltype=ctcp] .message {
 	text-indent: 0;
-    padding-left: 145px !important;
+    padding-left: 150px !important;
 }
 
 /* Message of the Day (MOTD) */
@@ -433,7 +467,7 @@ body div.line[ltype=part],
 body div.line[ltype=quit],
 body div.line[ltype=mode],
 body div.line[ltype=nick],
-body div.line[ltype=topic],
+/*body div.line[ltype=topic],*/
 body div.line[ltype=kill],
 body div.line[ltype=kick],
 body div.line[ltype=website] {
@@ -452,7 +486,7 @@ body div.line[ltype=part] .message,
 body div.line[ltype=quit] .message,
 body div.line[ltype=mode] .message,
 body div.line[ltype=nick] .message,
-body div.line[ltype=topic] .message,
+/*body div.line[ltype=topic] .message,*/
 body div.line[ltype=kill] .message,
 body div.line[ltype=kick] .message,
 body div.line[ltype=website] .message {
@@ -466,16 +500,16 @@ body div.line[ltype=part] .message:before,
 body div.line[ltype=quit] .message:before,
 body div.line[ltype=mode] .message:before,
 body div.line[ltype=nick] .message:before,
-body div.line[ltype=topic] .message:before,
+/*body div.line[ltype=topic] .message:before,*/
 body div.line[ltype=kill] .message:before,
 body div.line[ltype=kick] .message:before,
 body div.line[ltype=website] .message:before {
 	padding-right:4px;
 }
 
-body div.line[ltype=topic] span.message {
+/*body div.line[ltype=topic] span.message {
 	text-indent: 0;
-}
+}*/
 
 body div.line[ltype=nick] {
 	color: #529567;
@@ -514,7 +548,7 @@ body[dir=ltr] div[ltype=mode] .message:before {
 	content: "\2022";
 	color: #2cb6f6;
 	font-weight: 700;
-	margin-left:-2px;
+	margin-left:3px;
     margin-right: 9px;
 }
 
@@ -575,6 +609,7 @@ body div.line.selectedUser[highlight=false] {
 	background-color: #2f3e53;
 }
 
+
 body div.line[ltype=action] {
 	background-color:#1d1d1d;
 	padding-left:141px;
@@ -604,9 +639,6 @@ body div.line:hover {
 }
 body div.line:hover .message {
 	opacity:1;
-}
-body div.line[ltype=privmsg] .senderContainer {
-	border-right:1px solid rgb(64, 64, 64);
 }
 body div.line[ltype=action] .message {
 	border-left:1px solid rgb(64, 64, 64);
