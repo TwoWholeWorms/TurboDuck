@@ -694,6 +694,7 @@ body div.line[ltype=action][highlight=true] {
 	font-weight: normal;
 	background-color: #002c5a;
 }
+body div[ltype=action][highlight=true] p,
 body div[ltype=privmsg][highlight=true] .senderContainer {
 	background-color:#002c5a;
 }
@@ -707,11 +708,14 @@ body div.line:hover .message {
 body div.line[ltype=action] .message {
 	border-left:1px solid rgb(64, 64, 64);
 	padding-left:8px;
-	text-indent:-23px;
 	word-break:normal;
 }
+body div.line[ltype=action] .message .senderContainer {
+	left:-29px;
+}
 body div.line[ltype=action] .message .innerMessage {
-	text-indent:0;
+	text-indent:-32px;
+	display:inline-block;
 }
 body[dir=ltr] div[ltype=action] .sender:before {
 	margin-right:15px;
